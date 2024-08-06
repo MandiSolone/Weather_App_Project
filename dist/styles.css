@@ -1,71 +1,79 @@
 * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
-
-  body {
-    margin: 0;
-    width: 100vw;
-    min-height: 100vh;
-    background-color: rgb(50, 125, 145);
-    display: grid;
-    justify-content: center;
-    align-items: center;
-  }
-
-  h1 {
-    font-size: 30px;
-    background-color:rgba(255, 255, 255, 0);
-  }
-
-  .Weather-info {
-    background-color:rgba(255, 255, 255, 0);
-  }
-
-  #searchContainer {
-    min-width: 400px;
-    max-width: 600px;
-    margin: 5px auto;
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.338); 
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    margin-top: 50px;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
-  
-  #searchBtn:hover {
-    background-color: #000000;
-    color: rgb(69, 235, 235);
-  }
 
-  .buttons {
-    background-color: rgba(0,0,0, 0);
-  }
+body {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(50, 125, 145);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  #searchBtn {
-    margin: 10px, 0;
-    padding: 0.5rem 0.75rem;
-    border: none;
-    font-size: 16px;
-    border-radius: 0.5rem;
-    color: rgb(202, 193, 193);
-    background-color: rgb(36, 35, 55);
-    cursor: pointer;
-  }
+h1 {
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0);
+}
 
- #switchDegBtn {
-  background-color: rgba(0,0,0, 0);
+ul {
+  list-style-type: none;
+}
+
+#cityLocation 
+#temperatures,
+#tempF,
+#tempC,
+#description {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.buttons {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#searchContainer {
+  min-width: 300px;
+  max-width: 700px;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.338);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+#cityInput {
+  width: 50%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.Weather-info {
+  margin-top: 2rem;
+  padding: 1rem;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.227);
+  border-radius: 0.5rem;
+}
+
+#searchBtn {
+  margin: 10px, 0;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  font-size: 16px;
+  border-radius: 0.5rem;
+  color: rgb(202, 193, 193);
+  background-color: rgb(36, 35, 55);
+  cursor: pointer;
+}
+
+#switchDegBtn {
+  background-color: rgba(0, 0, 0, 0);
   margin-left: 0px;
   padding: 3px;
   border: solid rgba(0, 0, 0, 0.116);
@@ -73,40 +81,44 @@
   border-radius: 0.5rem;
   color: #000000fd;
   font-size: 10px;
- }
-
- #saveCityBtn{
-  background-color: rgb(115, 116, 130);
-  margin: 20px;
-  padding: 10px;
-  border-radius: 0.5rem;
-  color: #c2bec8;
- }
-
- #selectedAreas {
-  min-width: 400px;
-  max-width: 600px;
-  margin: 5px auto;
-  text-align: center;
-  padding: 20px;
-  background-color: rgba(16, 7, 58, 0.272); 
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgb(0, 0, 0);
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
 }
 
+#saveCityBtn {
+  background-color: rgb(115, 116, 130);
+  margin: 0.5rem;
+  padding: 10px;
+  border: none;
+  border-radius: 0.5rem;
+  color: #c2bec8;
+}
 
-/* #thead {
+#removeBtn {
+  background-color: rgb(115, 116, 130);
+  margin: 0.5rem;
+  padding: 10px;
+  border: none;
+  border-radius: 0.5rem;
+  color: #c2bec8;
+}
+
+#searchBtn:hover,
+#switchDegBtn:hover,
+#saveCityBtn:hover,
+#removeBtn:hover {
+  background-color: #000000;
+  color: rgb(69, 235, 235);
+}
+
+#selectedAreasContainer {
+  min-width: 300px;
+  max-width: 700px;
   display: block;
-  background-color: none;
+  margin-top: 3rem;
+  padding: 20px;
+  background-color: rgba(16, 7, 58, 0.272);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
   justify-content: center;
   align-items: center;
-} */
-/* #tableHeadRow {
-  display: block;
-  background-color: none;
-  justify-content: center;
-  align-items: center;
-} */
+  text-align: center;
+}

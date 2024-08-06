@@ -7,7 +7,8 @@
     <title>Weather App</title>
 </head>
 <body>
-    <main id="searchContainer">
+    <main>
+        <section id="searchContainer">
         <h1>Weather App</h1>
 
         <input  type="text" id="cityInput" placeholder="Enter a City">
@@ -25,22 +26,30 @@
             <p id="description"></p>
         </div> 
         <button id="saveCityBtn">Save Location</button> 
-    </main>
-    <div id="selectedAreas">
-        <table id="table">
-          <thead id="thead">
-            <tr id="tableHeadRow">
-              <th>City</th> 
-              <th>Temp</th>
-              <th>Weather</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <tr>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    <script src="main.js"></script>
+    </section>
+    
+        <section id="selectedAreasContainer">
+            <div class="row">
+              <div id="saved-list-locations">
+                <h3>Saved Locations</h3>
+                <ul id="ul"></ul>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div id="savedLocation-card" class="card-body">
+                    <h3 id="savedCityDisplay"> Selected Location</h3>
+                    <p id="saved-city"></p>
+                    <p id="saved-temp"></p>
+                    <p id="saved-description"></p>
+                    <button id="removeBtn" class="btn btn-warning removeBtn" disabled>
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+ </main>   
+ <script src="main.js"></script>
 </body>
 </html>
