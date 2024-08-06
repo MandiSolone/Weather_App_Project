@@ -56,15 +56,18 @@ function fetchWeather(city) {
      cityLocationEle.textContent = weatherData.name;
      descriptionEle.textContent = weatherData.weather[0].description;
      tempEleF.textContent = `${Math.round(weatherData.main.temp)}°F`;
-     tempEleC. textContent = `${Math.round((parseFloat(weatherData.main.temp)-32)*(5/9))} °C`;
+     tempEleC.textContent = `${Math.round((parseFloat(weatherData.main.temp)-32)*(5/9))} °C`; //conversion F  to C (stored not printed yet)
      cityInput.placeholder = "Enter a City"; /// not working?? Why?? 
 
   }
 }
 
-function cfSwitch(){
-    const f = tempEleF;
-    const c = tempEleC;
+//trying to make toggle b/w C and F 
+    const switchDegrees = document.getElementById('switchDegBtn');
+    switchDegrees.addEventListener("click", ()=> {
+        
+        const f = tempEleF;
+        const c = tempEleC;
     if (f.style.display === "none") {
       f.style.display = "block";
       c.style.display = "none"
@@ -72,14 +75,15 @@ function cfSwitch(){
       f.style.display = "none";
       c.style.display = "block";
     }
-  }
-
-  const span = document.querySelector('span');
-  const classes = span.classList;  
-  span.addEventListener("click", () =>{
-    const result = classes.toggle("(°M)");
-    span.textContent = `${classes}`;
-  })
+    });
+    
+//   HMTL to go with below -   <!-- <span class="(°A) (°B)">(°C ) / (°F)</span> -->
+//   const span = document.querySelector('span');
+//   const classes = span.classList;  
+//   span.addEventListener("click", () =>{
+//     const result = classes.toggle("(°M)");
+//     span.textContent = `${classes}`;
+//   })
 
 
 // //Async/Await

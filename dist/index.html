@@ -9,21 +9,38 @@
 <body>
     <main id="searchContainer">
         <h1>Weather App</h1>
+
         <input  type="text" id="cityInput" placeholder="Enter a City">
-        <span class="(°A) (°B)">(°C ) / (°F)</span>
-        <div class="switchBtn">
-            <button onclick="cfSwitch()">Celsius (°C ) / Fahrenheit (°F)</button>
+
+        <div class="buttons">
+            <button id="switchDegBtn">°C / °F </button>
+            <button id="searchBtn">Search</button>
           </div>
-        <button id="searchBtn">Search</button>
         <div class="Weather-info">
-            <h2 id="cityLocation">City</h2>
+            <h2 id="cityLocation"></h2>
             <div id="temperatures">
-            <p id="tempF">Temp F</p>
-            <p id="tempC">Celc</p>
+            <p id="tempF"></p>
+            <p id="tempC"></p>
             </div>
-            <p id="description">Description</p>
-        </div>  
+            <p id="description"></p>
+        </div> 
+        <button id="saveCityBtn">Save Location</button> 
     </main>
+    <div id="selectedAreas">
+        <table id="table">
+          <thead id="thead">
+            <tr id="tableHeadRow">
+              <th>City</th> 
+              <th>Temp</th>
+              <th>Weather</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     <script src="main.js"></script>
 </body>
 </html>
