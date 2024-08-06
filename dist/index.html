@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Weather App</title>
+</head>
+<body>
+    <main id="searchContainer">
+        <h1>Weather App</h1>
+        <input  type="text" id="cityInput" placeholder="Enter a City">
+        <span class="(°A) (°B)">(°C ) / (°F)</span>
+        <div class="switchBtn">
+            <button onclick="cfSwitch()">Celsius (°C ) / Fahrenheit (°F)</button>
+          </div>
+        <button id="searchBtn">Search</button>
+        <div class="Weather-info">
+            <h2 id="cityLocation">City</h2>
+            <div id="temperatures">
+            <p id="tempF">Temp F</p>
+            <p id="tempC">Celc</p>
+            </div>
+            <p id="description">Description</p>
+        </div>  
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
