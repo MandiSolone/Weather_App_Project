@@ -18,12 +18,14 @@
             <button id="searchBtn">Search</button>
           </div>
         <div class="Weather-info">
-            <h2 id="cityLocation"></h2>
+          <img id="image1" src ="" alt="">  
+          <h2 id="cityLocation"></h2>
             <div id="temperatures">
             <p id="tempF"></p>
             <p id="tempC"></p>
             </div>
             <p id="description"></p>
+            <p id="date"></p>
         </div> 
         <button id="saveCityBtn">Save Location</button> 
     </section>
@@ -37,7 +39,10 @@
               <div class="col">
                 <div class="card">
                   <div id="savedLocation-card" class="card-body">
-                    <h3 id="savedCityDisplay"> Selected Location</h3>
+                    <h3 id="savedCityDisplay"> (Current) Weather for Saved Location</h3>
+                    
+                    <img id="image2" src ="" alt="">
+                    <p id="time-stamped"></p> 
                     <p id="saved-city"></p>
                     <p id="saved-temp"></p>
                     <p id="saved-description"></p>

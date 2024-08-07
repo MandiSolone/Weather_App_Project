@@ -19,7 +19,9 @@ h1 {
 }
 
 ul {
+  list-style-position: outside;
   list-style-type: none;
+  color: rgb(199, 191, 191);
 }
 
 #cityLocation 
@@ -35,7 +37,7 @@ ul {
 }
 
 #searchContainer {
-  min-width: 300px;
+  min-width: 70vw;
   max-width: 700px;
   text-align: center;
   padding: 20px;
@@ -110,7 +112,7 @@ ul {
 }
 
 #selectedAreasContainer {
-  min-width: 300px;
+  min-width: 70vw;
   max-width: 700px;
   display: block;
   margin-top: 3rem;
@@ -121,4 +123,8 @@ ul {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+#time-stapmed {
+  font-size: 6px;
 }
