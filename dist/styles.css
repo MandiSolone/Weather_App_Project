@@ -24,6 +24,16 @@ ul {
   color: rgb(199, 191, 191);
 }
 
+#tempC {
+  display: none;
+}
+
+.weather-info, {
+  /* display: none; */
+  visibility: hidden;
+  position: absolute;
+}
+
 #cityLocation 
 #temperatures,
 #tempF,

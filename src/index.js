@@ -1,6 +1,6 @@
 // To fix - clear search bar after entered 
 // fix error catch 
-// can't enter a name more than once 
+// fix can't enter a name more than once 
 // CSS styling to hide a div until populated or click? 
 // change save li to show arrow/hoover/ 
 //style CSS 
@@ -22,6 +22,7 @@ const tempEleF = document.getElementById("tempF");
 const tempEleC = document.getElementById("tempC");
 const descriptionEle = document.getElementById("description");
 const dateEle = document.querySelector("#date");
+const WeatherInfoDisplayedDiv = document.getElementById("#weather-info");
 
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
 const WEATHER_KEY = "3f3a3408c529719814d0064e8c5d0eb0";
@@ -39,9 +40,13 @@ const refreshBtn = document.querySelector ("#refreshBtn");
 searchBtn.addEventListener("click", () => {
   const enteredCity = cityInput.value;
   if (enteredCity) {
-    fetchWeather(enteredCity);
+    fetchWeather(enteredCity);  
+    resetSearchFunction(); //not working 
+    WeatherInfoDisplayedDiv.style.visibility = `visible`; 
+    // saveCityBtn.style.visibility = `visible`; not working 
   }
 });
+
 
 function fetchWeather(enteredCity) {
   fetch(`${WEATHER_URL}?q=${enteredCity}&appid=${WEATHER_KEY}&units=imperial`)// Imperial = F degrees
@@ -56,22 +61,23 @@ function fetchWeather(enteredCity) {
     })
     .catch((error) => {
       console.error(`Error fecthing weather data:`, error);
-      descriptionEle.textContent = (`${enteredCity} name is an incorrect city. Please try again.`);//not working??
+      descriptionEle.textContent = (`${enteredCity} name is an incorrect city. Please try again.`);//Is this working?
     });
 
   function displayWeather(weatherData) { 
-    let icon = weatherData.weather[0].ico
+    let icon = weatherData.weather[0].icon
     imgEle.src = (`https://openweathermap.org/img/wn/${icon}.png`);
     imgEle.alt = weatherData.weather[0].description;
     cityLocationEle.textContent = weatherData.name;
     descriptionEle.textContent = weatherData.weather[0].description;
     dateEle.textContent = weatherData.dt;
     tempEleF.textContent = `${Math.round(weatherData.main.temp)}°F`;
-    tempEleC.textContent = `${Math.round(
-      (parseFloat(weatherData.main.temp) - 32) * (5 / 9)
-    )} °C`; //conversion F to C 
-    }
-  cityInput.value ="";// reset serch bar // not working?? Why??//  cityInput.placeholder = "Enter a City"; 
+    tempEleC.textContent = `${Math.round((parseFloat(weatherData.main.temp) - 32) * (5 / 9))} °C`; //conversion F to C 
+  }
+  
+  //clear search bar 
+function resetSearchFunction() {
+    cityInput.value = ""; 
   }
 
 // Save & Remove Locations 
