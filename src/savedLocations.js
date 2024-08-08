@@ -1,9 +1,12 @@
 export class Location {
-    constructor (id, city, temp, description){
+    constructor (id, city, temp, tempC, icon, description, date){
         this.id = id; 
         this.city = city; 
-        this.temp = temp; 
+        this.temp = temp;
+        this.tempC = tempC; 
+        this.icon = icon; 
         this.description = description; 
+        this.date = date; 
     }
 }
 
@@ -13,8 +16,8 @@ export class SavedCities {
         this.nextId = 0; 
     }
 
-add(city, temp, description) {
-    let newLocation = new Location (this.nextId++, city, temp, description);
+add(city, temp, tempC, icon, description, date) {
+    let newLocation = new Location (this.nextId++, city, temp, tempC, icon, description, date);
     this.list.push(newLocation);
 }
 

@@ -85,16 +85,7 @@ ul {
   font-size: 10px;
 }
 
-#saveCityBtn {
-  background-color: rgb(115, 116, 130);
-  margin: 0.5rem;
-  padding: 10px;
-  border: none;
-  border-radius: 0.5rem;
-  color: #c2bec8;
-}
-
-#removeBtn {
+#removeBtn, #refreshBtn, #saveCityBtn {
   background-color: rgb(115, 116, 130);
   margin: 0.5rem;
   padding: 10px;
@@ -106,7 +97,8 @@ ul {
 #searchBtn:hover,
 #switchDegBtn:hover,
 #saveCityBtn:hover,
-#removeBtn:hover {
+#removeBtn:hover,
+#refreshBtn:hover {
   background-color: #000000;
   color: rgb(69, 235, 235);
 }

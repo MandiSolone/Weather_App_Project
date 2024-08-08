@@ -2,6 +2,7 @@
 // fix error catch 
 // can't enter a name more than once 
 // CSS styling to hide a div until populated or click? 
+// change save li to show arrow/hoover/ 
 //style CSS 
 
 //pull and store C and toggle b/w 
@@ -25,20 +26,24 @@ const dateEle = document.querySelector("#date");
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
 const WEATHER_KEY = "3f3a3408c529719814d0064e8c5d0eb0";
 
+const uLElement = document.querySelector("#ul");
+const savedCityEle = document.querySelector("#saved-city"); 
+const savedTempEle = document.querySelector("#saved-temp"); 
+const savedTempCEle = document.querySelector("#saved-tempC");
+const savedDescriptEle = document.querySelector("#saved-description"); 
+const savedTimeStamp = document.querySelector("time-stamped");
+const saveCityBtn = document.querySelector("#saveCityBtn");
+const removeBtn = document.querySelector("#removeBtn");
+const refreshBtn = document.querySelector ("#refreshBtn");
+
 searchBtn.addEventListener("click", () => {
   const enteredCity = cityInput.value;
-  console.log("G enteredCity", enteredCity);
-
   if (enteredCity) {
     fetchWeather(enteredCity);
   }
 });
 
 function fetchWeather(enteredCity) {
-
-  console.log(`H fetchWeather(enteredCity):`, enteredCity);
-  console.log(`I URL`, (`${WEATHER_URL}?q=${enteredCity}&appid=${WEATHER_KEY}&units=imperial`));
-
   fetch(`${WEATHER_URL}?q=${enteredCity}&appid=${WEATHER_KEY}&units=imperial`)// Imperial = F degrees
     .then((response) => {
       if (!response.ok) {
@@ -47,15 +52,6 @@ function fetchWeather(enteredCity) {
       return response.json(); 
     })
     .then((weatherData) => {
-      console.log("J weatherData", weatherData);
-      console.log("A cityInput", cityInput.textContent); //not storing this or letting me pull it 
-      console.log("B searchBtn", searchBtn.value);  
-      console.log("C cityLocationEle", cityLocationEle.textContent);
-      console.log("D tempEleF", tempEleF.textContent);
-      console.log("E tempEleC", tempEleC.textContent);
-      console.log("F descriptionEle", descriptionEle.textContent);
-      console.log("GG weatherData.id", weatherData.id);
-
       displayWeather(weatherData);
     })
     .catch((error) => {
@@ -63,20 +59,8 @@ function fetchWeather(enteredCity) {
       descriptionEle.textContent = (`${enteredCity} name is an incorrect city. Please try again.`);//not working??
     });
 
-  
   function displayWeather(weatherData) { 
-    let icon = weatherData.weather[0].icon
-
-    console.log("K weatherData.name", weatherData.name);
-    console.log("L weatherData.weather[0].description", weatherData.weather[0].description);
-    console.log("M `${Math.round(weatherData.main.temp)}°F`", `${Math.round(weatherData.main.temp)}°F`);
-    console.log("N °C", `${Math.round(
-      (parseFloat(weatherData.main.temp) - 32) * (5 / 9)
-    )} °C`);
-    console.log("O cityInput.placeholder", cityInput.placeholder);
-    console.log("O2 weatherData.weather[0].icon", weatherData.weather[0].icon);
-    console.log("O3 icon", icon);
-
+    let icon = weatherData.weather[0].ico
     imgEle.src = (`https://openweathermap.org/img/wn/${icon}.png`);
     imgEle.alt = weatherData.weather[0].description;
     cityLocationEle.textContent = weatherData.name;
@@ -85,112 +69,104 @@ function fetchWeather(enteredCity) {
     tempEleF.textContent = `${Math.round(weatherData.main.temp)}°F`;
     tempEleC.textContent = `${Math.round(
       (parseFloat(weatherData.main.temp) - 32) * (5 / 9)
-    )} °C`; //conversion F to C // How do I make it just stored and not printed yet?
+    )} °C`; //conversion F to C 
     }
-     // reset serch bar // not working?? Why?? //cityInput.value =""; 
-     cityInput.placeholder = "Enter a City"; 
-     cityInput.value ="";
+  cityInput.value ="";// reset serch bar // not working?? Why??//  cityInput.placeholder = "Enter a City"; 
   }
 
-// Save & Remove Locations //Do I need to add an await/promise? 
+// Save & Remove Locations 
 let newSavedCities = new SavedCities(); 
-console.log(newSavedCities.list); 
-
-const uLElement = document.querySelector("#ul");
-const savedCityEle = document.querySelector("#saved-city"); 
-const savedTempEle = document.querySelector("#saved-temp"); 
-const savedDescriptEle = document.querySelector("#saved-description"); 
-const savedTimeStamp = document.querySelector("time-stamped");
-const saveCityBtn = document.querySelector("#saveCityBtn");
-const removeBtn = document.querySelector("#removeBtn");
-
-console.log("1 uLElement", uLElement); 
-console.log("2 savedCityEle", savedCityEle); 
-console.log("3 savedTempEle", savedTempEle); 
-console.log("4 savedDescriptEle", savedDescriptEle); 
-console.log("5 saveCityBtn", saveCityBtn); 
-console.log("6 removeBt", removeBtn); 
-
-saveCityBtn.addEventListener("click", addCity);
-removeBtn.addEventListener("click", removeCity);
 
 function updateDOMSavedList(){
     uLElement.innerHTML = " "; //clear the contents of ul 
 
-        newSavedCities.list.forEach((newLocation) => { 
-        let liLocation = document.createElement("li"); 
-        liLocation.textContent = `${newLocation.city}`; 
+    newSavedCities.list.forEach((newLocation) => { //add city name to DOM uL list. Stored in newSavedCities w/ an id 
+    let liLocation = document.createElement("li"); 
+    liLocation.textContent = `${newLocation.city}`; 
+    uLElement.appendChild(liLocation); 
 
-        console.log("7 newLocation.city",newLocation.city);
-        console.log("8 liLocation.textContent",liLocation.textContent); 
+    liLocation.addEventListener("click", () => showLocationDetails(newLocation)); 
 
-        uLElement.appendChild(liLocation); //add city name to DOM uL list. Stored in newSavedCities w/ an id # 
-
-        liLocation.addEventListener("click", () => showLocationDetails(newLocation)); //when li is clicked it shows data
     });
-
     function showLocationDetails(newLocation) {
         const img2Ele = document.querySelector("#image2"); 
-        //let icon2 = weatherData.weather[0].icon
-        let icon2 = newLocation.icon
-
-        img2Ele.src = (`https://openweathermap.org/img/wn/${icon2}.png`);
+        
+        // let icon2 = newLocation.icon;
+        // img2Ele.src = (`https://openweathermap.org/img/wn/${icon2}.png`);
+        
         img2Ele.alt = newLocation.description;
-
+        img2Ele.src = newLocation.icon;
         savedTimeStamp.textContent = newLocation.date;
         savedCityEle.textContent = newLocation.city; 
         savedTempEle.textContent = newLocation.temp; 
+        savedTempCEle.textContent = newLocation.tempC; 
         savedDescriptEle.textContent = newLocation.description;
-
-        removeBtn.disabled = false; //enable remove button
-        
-
-        console.log("9 newLocation.city",newLocation.city); 
-        console.log("10  savedCityEle.textContent", savedCityEle.textContent); 
-        console.log("11 newLocation.temp",newLocation.temp); 
-        console.log("12 savedTempEle.textContent",savedTempEle.textContent); 
-        console.log("13 newLocation.description",newLocation.description); 
-        console.log("14 savedDescriptEle.textContent",savedDescriptEle.textContent); 
-
-     //This will set a custom data- attribute on the DOM element that corresponds with the selected element
-     removeBtn.setAttribute("data-locationId", newLocation.id);
-
-     console.log("15 newLocation.id",newLocation.id); 
-     console.log("16 removeBtn.attributes",removeBtn.attributes); 
+        //enable remove button
+        //This will set a custom data- attribute on the DOM element that corresponds with the selected element
+        removeBtn.disabled = false; 
+        removeBtn.setAttribute("data-locationId", newLocation.id);
     }
 }
+
+//Save & Remove button
+saveCityBtn.addEventListener("click", addCity);
+removeBtn.addEventListener("click", removeCity);
 
 function addCity(event) {
     event.preventDefault(); 
 
     let city = cityLocationEle.textContent;
     let temp = tempEleF.textContent;
+    let tempC = tempEleC.textContent; 
+    let icon =  imgEle.src; //weatherData.weather[0].icon;
+    console.log("addCity icon", icon);
     let description = descriptionEle.textContent;
-    let date =   
-    newSavedCities.add(city, temp, description);
-    console.log("17 cityLocationEle.textContent",cityLocationEle.textContent);
-    console.log("18 tempEleF.textContent",tempEleF.textContent);
-    console.log("19 descriptionEle.textContente",descriptionEle.textContent);
-    console.log("20 newSavedCities.list",newSavedCities.list);
+    let date = dateEle.textContent;
+
+    newSavedCities.add(city, temp, tempC, icon, description, date);
 
     updateDOMSavedList(); 
 }
 
 function removeCity() {
     let locationId = Number(removeBtn.getAttribute("data-locationId"));
-    console.log("21 locationId", Number(removeBtn.getAttribute("data-locationId"))); 
+   
     newSavedCities.remove(locationId); 
-    console.log("22 newSavedCities.list", newSavedCities.list); 
-
-    updateDOMSavedList(); //think through logic and do console.logs 
+ 
+    updateDOMSavedList(); 
     savedCityEle.textContent = "";
     savedTempEle.textContent = "";
-  savedDescriptEle.textContent = "";
-  removeBtn.disabled = true;// disable remove Btn
+    savedDescriptEle.textContent = "";
+    removeBtn.disabled = true;// disable remove Btn
 }
+
+//refresh Saved Weather Button 
+refreshBtn.addEventListener("click", fetchRefreshCity);
+
+function fetchRefreshCity(refreshWeatherData){
+    const refreshCity = document.querySelector("#saved-city");
+
+  fetch(`${WEATHER_URL}?q=${refreshCity.value}&appid=${WEATHER_KEY}&units=imperial`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${refreshCity.value} name: typed wrong or blank input.`);
+      }
+      return response.json(); 
+    })
+    .then((refreshWeatherData) => {
+       savedTimeStamp.textContent = refreshWeatherData.date;
+        savedCityEle.textContent = refreshWeatherData.city; 
+        savedTempEle.textContent = refreshWeatherData.temp; 
+        savedDescriptEle.textContent = refreshWeatherData.description;
+    })
+    .catch((error) => {
+      console.error(`Error fecthing weather data:`, error);
+      descriptionEle.textContent = (`${refreshCity.value} name is an incorrect city. Please try again.`);//not working??
+    });
 
 //Toggle b/w C and F //add save elements for f & c 
 const switchDegrees = document.getElementById("switchDegBtn");
+
 switchDegrees.addEventListener("click", () => {
   const f = tempEleF;
   const c = tempEleC;
@@ -201,4 +177,4 @@ switchDegrees.addEventListener("click", () => {
     f.style.display = "none";
     c.style.display = "block";
   }
-});
+}
