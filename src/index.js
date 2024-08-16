@@ -37,16 +37,20 @@ const saveCityBtn = document.querySelector("#saveCityBtn");
 const removeBtn = document.querySelector("#removeBtn");
 const refreshBtn = document.querySelector ("#refreshBtn");
 
+  //clear search bar 
+  function resetSearchFunction() {
+    cityInput.value = (""); 
+  }
+
 searchBtn.addEventListener("click", () => {
   const enteredCity = cityInput.value;
   if (enteredCity) {
     fetchWeather(enteredCity);  
     resetSearchFunction(); //not working 
     WeatherInfoDisplayedDiv.style.visibility = `visible`; 
-    // saveCityBtn.style.visibility = `visible`; not working 
+    saveCityBtn.style.visibility = `visible`;  
   }
 });
-
 
 function fetchWeather(enteredCity) {
   fetch(`${WEATHER_URL}?q=${enteredCity}&appid=${WEATHER_KEY}&units=imperial`)// Imperial = F degrees
@@ -73,11 +77,6 @@ function fetchWeather(enteredCity) {
     dateEle.textContent = weatherData.dt;
     tempEleF.textContent = `${Math.round(weatherData.main.temp)}°F`;
     tempEleC.textContent = `${Math.round((parseFloat(weatherData.main.temp) - 32) * (5 / 9))} °C`; //conversion F to C 
-  }
-  
-  //clear search bar 
-function resetSearchFunction() {
-    cityInput.value = ""; 
   }
 
 // Save & Remove Locations 
@@ -145,30 +144,6 @@ function removeCity() {
     savedDescriptEle.textContent = "";
     removeBtn.disabled = true;// disable remove Btn
 }
-
-//refresh Saved Weather Button 
-refreshBtn.addEventListener("click", fetchRefreshCity);
-
-function fetchRefreshCity(refreshWeatherData){
-    const refreshCity = document.querySelector("#saved-city");
-
-  fetch(`${WEATHER_URL}?q=${refreshCity.value}&appid=${WEATHER_KEY}&units=imperial`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`${refreshCity.value} name: typed wrong or blank input.`);
-      }
-      return response.json(); 
-    })
-    .then((refreshWeatherData) => {
-       savedTimeStamp.textContent = refreshWeatherData.date;
-        savedCityEle.textContent = refreshWeatherData.city; 
-        savedTempEle.textContent = refreshWeatherData.temp; 
-        savedDescriptEle.textContent = refreshWeatherData.description;
-    })
-    .catch((error) => {
-      console.error(`Error fecthing weather data:`, error);
-      descriptionEle.textContent = (`${refreshCity.value} name is an incorrect city. Please try again.`);//not working??
-    });
 
 //Toggle b/w C and F //add save elements for f & c 
 const switchDegrees = document.getElementById("switchDegBtn");
