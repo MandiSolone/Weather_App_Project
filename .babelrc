@@ -1,0 +1,5 @@
+// Tells Babel to transpile your JavaScript into compatible versions for older browsers.
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  }
+  
