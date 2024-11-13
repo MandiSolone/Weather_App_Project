@@ -52,15 +52,16 @@ ul {
   visibility: hidden; /* Hidden initially */
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  background-color: rgb(36, 35, 55);
 }
 
 #saveCityBtn:hover {
-  background-color: #45a049;
+  background-color: #000000;
+  color: rgb(69, 235, 235);
 }
 
 /* Weather information */
