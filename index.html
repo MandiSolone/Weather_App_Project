@@ -1,1 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="stylesheet" href="styles.css"/><title>Weather App</title><script defer="defer" src="bundle.js"></script><link href="styles.css" rel="stylesheet"></head><body><main><section id="searchContainer"><h1>Weather App</h1><input id="cityInput" placeholder="Enter a City"/><div class="buttons"><button id="switchDegBtn">°C / °F</button> <button id="searchBtn">Search</button></div><div id="weather-info"><img id="image1" src="" alt=""/><h2 id="cityLocation"></h2><div id="temperatures"><p id="tempF"></p><p id="tempC"></p></div><p id="description"></p><p id="date"></p></div><button id="saveCityBtn">Save Location</button></section><section id="selectedAreasContainer"><div class="row"><div id="saved-list-locations"><h3>Saved Locations</h3><ul id="ul"></ul></div><div class="col"><div class="card"><div id="savedLocation-card" class="card-body"><h3 id="savedCityDisplay">Historically Saved Weather</h3><img id="image2" src="" alt=""/><p id="time-stamped"></p><p id="saved-city"></p><p id="saved-temp"></p><p id="saved-tempC"></p><p id="saved-description"></p><button id="removeBtn" class="btn btn-warning removeBtn" disabled="disabled">Remove</button></div></div></div></div></section></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Weather App</title>
+  <script defer src="bundle.js"></script><link href="styles.css" rel="stylesheet"></head>
+  <body>
+    <main>
+      <section id="searchContainer">
+        <h1>Weather App</h1>
+
+        <input type="text" id="cityInput" placeholder="Enter a City" />
+
+        <div class="buttons">
+          <button id="switchDegBtn">°C / °F</button>
+          <button id="searchBtn"> Search</button>
+        </div>
+        <div id="weather-info">
+          <img id="image1" src="" alt="" />
+          <h2 id="cityLocation"></h2>
+          <div id="temperatures">
+            <p id="tempF"></p>
+            <p id="tempC"></p>
+          </div>
+          <p id="description"></p>
+          <p id="date"></p>
+        </div>
+        <button id="saveCityBtn">Save Location</button>
+      </section>
+
+      <section id="selectedAreasContainer">
+        <div class="row">
+          <div id="saved-list-locations">
+            <h3>Saved Locations</h3>
+            <ul id="ul"></ul>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div id="savedLocation-card" class="card-body">
+                <h3 id="savedCityDisplay">
+                  Historically Saved Weather
+                </h3>
+
+                <img id="image2" src="" alt="" />
+                <p id="time-stamped"></p>
+                <p id="saved-city"></p>
+                <p id="saved-temp"></p>
+                <p id="saved-tempC"></p>
+                <p id="saved-description"></p>
+                <button
+                  id="removeBtn"
+                  class="btn btn-warning removeBtn"
+                  disabled
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- <script src="main.js"></script> -->
+  </body>
+</html>
