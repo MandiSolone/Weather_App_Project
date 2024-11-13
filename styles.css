@@ -146,7 +146,7 @@ ul {
 /* Saved Locations Section */
 #selectedAreasContainer {
   min-width: 70vw;
-  max-width: 400px;
+  max-width: 50%;
   display: block;
   margin-top: 3rem;
   padding: 20px;
