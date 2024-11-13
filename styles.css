@@ -1,0 +1,179 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(50, 125, 145);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add padding to avoid content touching edges on small screens */
+}
+
+h1 {
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-position: outside;
+  list-style-type: none;
+  color: rgb(199, 191, 191);
+  padding-left: 0;
+}
+
+#tempC {
+  display: none;
+}
+
+#weather-info {
+  visibility: hidden; /* Keep hidden initially */
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Set a max-width for consistency */
+  margin: 20px auto; /* Center the weather info on the page */
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Hide anything that overflows the container */
+  text-align: center; /* Center text inside the container */
+}
+
+/* Style for Save City Button */
+#saveCityBtn {
+  visibility: hidden; /* Hidden initially */
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#saveCityBtn:hover {
+  background-color: #45a049;
+}
+
+/* Weather information */
+#cityLocation,
+#temperatures,
+#tempF,
+#tempC,
+#description {
+  background-color: rgba(255, 255, 255, 0);
+  margin: 10px 0;
+}
+
+/* Buttons */
+.buttons {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#searchContainer {
+  min-width: 70vw;
+  max-width: 700px;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.338);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  margin-bottom: 20px; /* Add space below search container */
+}
+
+#cityInput {
+  width: 60%; /* Adjust input width for better responsiveness */
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#searchBtn {
+  margin: 10px 0;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  font-size: 16px;
+  border-radius: 0.5rem;
+  color: rgb(202, 193, 193);
+  background-color: rgb(36, 35, 55);
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background-color: #000000;
+  color: rgb(69, 235, 235);
+}
+
+/* Temperature Conversion Button */
+#switchDegBtn {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 3px;
+  border: solid rgba(0, 0, 0, 0.116);
+  border-width: 1px;
+  border-radius: 0.5rem;
+  color: #000000fd;
+  font-size: 10px;
+}
+
+#removeBtn,
+#refreshBtn {
+  background-color: rgb(115, 116, 130);
+  margin: 0.5rem;
+  padding: 10px;
+  border: none;
+  border-radius: 0.5rem;
+  color: #c2bec8;
+}
+
+#removeBtn:hover,
+#refreshBtn:hover {
+  background-color: #000000;
+  color: rgb(69, 235, 235);
+}
+
+/* Saved Locations Section */
+#selectedAreasContainer {
+  min-width: 70vw;
+  max-width: 700px;
+  display: block;
+  margin-top: 3rem;
+  padding: 20px;
+  background-color: rgba(16, 7, 58, 0.272);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px; /* Add space below saved locations */
+}
+
+#ul li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#ul li:hover {
+  background-color: #e0e0e0;
+}
+
+/* Time-stamped label for saved cities */
+#time-stapmed {
+  font-size: 6px;
+}
+
+
