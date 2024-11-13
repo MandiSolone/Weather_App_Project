@@ -13,10 +13,10 @@ body {
   min-height: 100vh;
   background-color: rgb(50, 125, 145);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px; /* Add padding to avoid content touching edges on small screens */
-  flex-direction: column; /* Allow vertical stacking */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack content vertically */
+  padding: 20px; /* Add padding to avoid content touching edges */
 }
 
 h1 {
@@ -41,14 +41,14 @@ ul {
   position: relative;
   width: 100%;
   max-width: 600px; /* Set a max-width for consistency */
-  margin: 20px auto; /* Center the weather info on the page */
+  margin: 20px auto; /* Center the weather info */
   padding: 20px;
   background-color: #f3f3f3;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Hide anything that overflows the container */
-  text-align: center; /* Center text inside the container */
-  color: rgb(50, 50, 50); /* Dark text for readability */
+  overflow: hidden; /* Hide overflow */
+  text-align: center;
+  color: rgb(50, 50, 50);
 }
 
 /* Style for Save City Button */
@@ -85,13 +85,15 @@ ul {
 
 #searchContainer {
   width: 100%;
-  max-width: 400px; /* Make the container a bit more compact */
+  max-width: 600px; /* Set to 600px or desired width */
   text-align: center;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(0, 0, 0);
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto; /* Center the container */
 }
 
 /* Input and Search Button Styles */
@@ -152,8 +154,8 @@ ul {
 /* Saved Locations Section */
 #selectedAreasContainer {
   width: 100%;
-  max-width: 400px;
-  display: block;
+  max-width: 600px; /* Set to 600px or desired width */
+  display: block; /* Ensure it's block level (default) */
   margin-top: 3rem;
   padding: 20px;
   background-color: rgba(16, 7, 58, 0.272);
@@ -162,7 +164,9 @@ ul {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 20px; /* Add space below saved locations */
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto; /* Center the container */
 }
 
 #selectedAreasContainer ul {
@@ -187,25 +191,35 @@ ul {
   font-size: 6px;
 }
 
+/* Flexbox Layout for Side-by-Side - No longer necessary since we are centering vertically and horizontally */
+.main-container {
+  display: block; /* Ensure block-level behavior */
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   #searchContainer,
   #selectedAreasContainer {
-    width: 90%; /* Make the containers take more space on smaller screens */
+    width: 100%;
+    max-width: none; /* Remove max-width for smaller screens */
   }
 
   h1 {
-    font-size: 24px; /* Slightly smaller font for smaller screens */
+    font-size: 24px; /* Adjust font size */
   }
 }
 
 @media (max-width: 480px) {
   body {
-    padding: 10px; /* Less padding on mobile devices */
+    padding: 10px; /* Less padding on mobile */
   }
 
   #cityInput {
-    width: 100%; /* Make the input fill the width on smaller screens */
+    width: 100%; /* Full-width input on smaller screens */
   }
 }
 
