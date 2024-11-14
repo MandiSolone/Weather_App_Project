@@ -6,14 +6,13 @@
 
 body {
   margin: 0;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
   background-color: rgb(50, 125, 145);
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Stack content vertically */
-  padding: 20px; /* Add padding to avoid content touching edges */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
 h1 {
@@ -34,23 +33,22 @@ ul {
 }
 
 #weather-info {
-  visibility: hidden; /* Keep hidden initially */
+  visibility: hidden;
   position: relative;
   width: 100%;
-  max-width: 600px; /* Set a max-width for consistency */
-  margin: 20px auto; /* Center the weather info */
+  max-width: 600px;
+  margin: 20px auto;
   padding: 20px;
   background-color: #f3f3f3;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Hide overflow */
+  overflow: hidden;
   text-align: center;
   color: rgb(50, 50, 50);
 }
 
-/* Style for Save City Button */
 #saveCityBtn {
-  visibility: hidden; /* Hidden initially */
+  visibility: hidden;
   margin-top: 10px;
   padding: 10px 20px;
   color: white;
@@ -65,7 +63,6 @@ ul {
   color: rgb(69, 235, 235);
 }
 
-/* Weather information */
 #cityLocation,
 #temperatures,
 #tempF,
@@ -75,14 +72,13 @@ ul {
   margin: 10px 0;
 }
 
-/* Buttons */
 .buttons {
   background-color: rgba(0, 0, 0, 0);
 }
 
 #searchContainer {
   width: 100%;
-  max-width: 600px; /* Set to 600px or desired width */
+  max-width: 600px;
   text-align: center;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -90,10 +86,9 @@ ul {
   box-shadow: 0 0 10px rgb(0, 0, 0);
   margin-bottom: 20px;
   margin-left: auto;
-  margin-right: auto; /* Center the container */
+  margin-right: auto;
 }
 
-/* Input and Search Button Styles */
 #cityInput {
   width: 80%;
   padding: 10px;
@@ -120,7 +115,6 @@ ul {
   color: rgb(69, 235, 235);
 }
 
-/* Temperature Conversion Button */
 #switchDegBtn {
   background-color: rgba(0, 0, 0, 0);
   padding: 3px;
@@ -131,7 +125,6 @@ ul {
   font-size: 10px;
 }
 
-/* Remove & Refresh Buttons */
 #removeBtn,
 #refreshBtn {
   background-color: rgb(115, 116, 130);
@@ -148,11 +141,10 @@ ul {
   color: rgb(69, 235, 235);
 }
 
-/* Saved Locations Section */
 #selectedAreasContainer {
   width: 100%;
-  max-width: 600px; /* Set to 600px or desired width */
-  display: block; /* Ensure it's block level (default) */
+  max-width: 600px;
+  display: block;
   margin-top: 3rem;
   padding: 20px;
   background-color: rgba(16, 7, 58, 0.272);
@@ -163,7 +155,7 @@ ul {
   text-align: center;
   margin-bottom: 20px;
   margin-left: auto;
-  margin-right: auto; /* Center the container */
+  margin-right: auto;
 }
 
 #selectedAreasContainer ul {
@@ -183,26 +175,31 @@ ul {
   background-color: #e0e0e0;
 }
 
-/* Time-stamped label for saved cities */
 #time-stapmed {
   font-size: 6px;
 }
 
-/* Flexbox Layout for Side-by-Side - No longer necessary since we are centering vertically and horizontally */
+/* Flexbox Layout for Side-by-Side */
 .main-container {
-  display: block; /* Ensure block-level behavior */
+  display: flex; /* Flexbox to align children side by side */
+  justify-content: space-between; /* Space between the two containers */
+  align-items: flex-start; /* Align items to the top */
   width: 100%;
   margin-top: 20px;
   text-align: center;
-  justify-content: center;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   #searchContainer,
   #selectedAreasContainer {
-    width: 100%;
+    width: 100%; /* Full width on smaller screens */
     max-width: none; /* Remove max-width for smaller screens */
+  }
+
+  .main-container {
+    flex-direction: column; /* Stack containers vertically on small screens */
+    align-items: center; /* Center content when stacked */
   }
 
   h1 {
